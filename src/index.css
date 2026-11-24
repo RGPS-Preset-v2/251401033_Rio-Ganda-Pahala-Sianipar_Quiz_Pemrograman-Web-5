@@ -1,0 +1,427 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+:root {
+  --bg-main: #f0f7ff;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --primary-glow: rgba(14, 165, 233, 0.25);
+  --danger: #f43f5e;
+  --danger-dark: #e11d48;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #bae6fd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.16) 0%, transparent 40%),
+    radial-gradient(circle at 88% 82%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
+    linear-gradient(to right, rgba(14, 165, 233, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 165, 233, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* Container Halaman Utama */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* Header Bergaya Anime Tactical HUD */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid var(--border-color);
+  border-left: 6px solid var(--primary);
+  border-radius: 14px;
+  padding: 20px 28px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.08);
+}
+
+.header-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+/* Tombol */
+.btn {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1.5px);
+}
+
+.btn-blue {
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+}
+
+.btn-red {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.28);
+}
+
+.btn-icon {
+  border: none;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-icon:hover {
+  transform: scale(1.07);
+}
+
+/* Tabel Todo Card */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.todo-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.todo-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--primary-dark);
+  background-color: rgba(224, 242, 254, 0.55);
+  padding: 16px 20px;
+  border-bottom: 1.5px solid var(--border-color);
+}
+
+.todo-table td {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0f2fe;
+  vertical-align: middle;
+}
+
+.todo-table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.todo-table tbody tr:hover {
+  background-color: rgba(240, 249, 255, 0.9);
+}
+
+.todo-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.title-cell {
+  max-width: 240px;
+  font-weight: 700 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deadline-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px !important;
+  color: var(--text-muted) !important;
+}
+
+/* Badges Status & Prioritas */
+.badge {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.badge-status-todo {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.badge-status-progress {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #7dd3fc;
+}
+
+.badge-status-done {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.badge-prio-low {
+  background-color: #f0fdf4;
+  color: #16a34a;
+}
+
+.badge-prio-medium {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.badge-prio-high {
+  background-color: #ffe4e6;
+  color: #e11d48;
+}
+
+.action-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.th-center {
+  text-align: center !important;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+  color: white;
+  padding: 13px 22px;
+  border-radius: 12px;
+  border: 1px solid #bae6fd;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.35);
+  z-index: 2000;
+  animation: slideIn 0.25s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal Overlay & Box */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-box {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 16px;
+  border: 1.5px solid var(--border-color);
+  border-top: 5px solid var(--primary);
+  padding: 26px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #1e293b;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-main);
+  background-color: #f8fafc;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+textarea.form-control {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal-actions .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Halaman Detail (/todo/:id) */
+.detail-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.detail-card {
+  width: 100%;
+  max-width: 600px;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid var(--border-color);
+  border-top: 6px solid var(--primary);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 12px 32px rgba(14, 165, 233, 0.12);
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 28px;
+}
+
+.detail-field {
+  margin-bottom: 16px;
+}
+
+.detail-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+}
+
+.detail-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.detail-desc-box {
+  margin-top: 6px;
+  border: 1.5px solid #e0f2fe;
+  background-color: #f8fafc;
+  border-radius: 10px;
+  padding: 14px;
+  min-height: 100px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.detail-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.detail-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.detail-buttons .btn {
+  padding: 9px 16px;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .detail-card {
+    grid-template-columns: 1fr;
+  }
+}
